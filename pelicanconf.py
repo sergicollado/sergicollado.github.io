@@ -20,6 +20,7 @@ TRANSLATION_FEED_ATOM = None
 
 # Blogroll
 LINKS =  (
+          ('Cuble', 'https://cuble.es'),
           ('Becode', 'https://becodemyfriend.com'),
           ('GIT-HUB', 'https://github.com/sergicollado'),
         )
@@ -36,18 +37,10 @@ RELATIVE_URLS = True
 
 
 #DEFAULT_DATE_FORMAT = ('%b %d %Y') : suggested date format
-SITESUBTITLE = ''
+SITESUBTITLE = u'TDD Developer, Python, Agile Javascript coder and better human, I like vegetarian food.'
 #FOOTER_TEXT = 'Replace pelican credit'
 DISPLAY_CATEGORIES_ON_MENU = False
 #LINKS = (('Site', 'http://url.com'), ('Site 2', 'http://another.url.com'))
 SINGLE_AUTHOR = True
 MINT = True
-GOOGLE_ANALYTICS = """<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-41990150-1', 'sergicollado.com');
-  ga('send', 'pageview');
-</script>"""
+GOOGLE_ANALYTICS = "UA-41990150-1"

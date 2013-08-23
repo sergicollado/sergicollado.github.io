@@ -1,5 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sergi Collado</title><link href="http://sergicollado.com/" rel="alternate"></link><link href="http://sergicollado.com/feeds/dev.atom.xml" rel="self"></link><id>http://sergicollado.com/</id><updated>2013-06-20T00:00:00+02:00</updated><entry><title>Librería tmxScene python-sfml python</title><link href="http://sergicollado.com/tmxscene.html" rel="alternate"></link><updated>2013-06-20T00:00:00+02:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2013-06-20:tmxscene.html</id><summary type="html">&lt;p&gt;&lt;img alt="sfml" src="http://sergicollado.com/static/images/posts/sfml-logo.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sergi Collado</title><link href="http://sergicollado.com/" rel="alternate"></link><link href="http://sergicollado.com/feeds/dev.atom.xml" rel="self"></link><id>http://sergicollado.com/</id><updated>2013-08-23T00:00:00+02:00</updated><entry><title>Haystack, ElasticSearch en Django</title><link href="http://sergicollado.com/haystack.html" rel="alternate"></link><updated>2013-08-23T00:00:00+02:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2013-08-23:haystack.html</id><summary type="html">&lt;p&gt;&lt;img alt="elasticsearch" src="http://sergicollado.com/static/images/posts/elasticsearch.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.elasticsearch.org/" target="_blank"&gt;Elasticsearch&lt;/a&gt; es una herramienta open source flexible y poderosa, un motor de búsquedas y analíticas real-time distribuido, cuyo corazón es el famoso proyecto Java Lucene.&lt;/p&gt;
+&lt;p&gt;En esta entrada no pretendo hacer un manual extenso sobre este magnífico proyecto open source, si no describir los pasos básicos que se deben seguir para usarlo en nuestras aplicaciones web Django, a través de &lt;a href="http://haystacksearch.org/" target="_blank"&gt;Haystack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://haystacksearch.org/"&gt;Haystack&lt;/a&gt; es una librería para Django que nos sirve para usar motores de búsqueda a través  de su API, se integra pefectamente con el workflow del Framework y nos permite usar varios motores como &lt;a href="http://lucene.apache.org/solr/" target="_blank"&gt;Solr&lt;/a&gt;,&lt;a href="https://bitbucket.org/mchaput/whoosh/wiki/Home" target="_blank"&gt;whoosh&lt;/a&gt;,etc...&lt;/p&gt;
+&lt;p&gt;Primero deberíamos instalar ElastickSearch, para ello vamos a su página de &lt;a href="http://www.elasticsearch.org/download/" target=":_blank"&gt;descargas&lt;/a&gt; , allí bajamos la versión que nos interese, en mi caso como uso Ubuntu el .deb, y lo instalo en mi máquina.&lt;/p&gt;
+&lt;p&gt;Ahora tenemos que iniciarlo como servicio:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;elasticsearch&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
+
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;sergi&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; 
+     &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Starting&lt;/span&gt; &lt;span class="n"&gt;ElasticSearch&lt;/span&gt; &lt;span class="n"&gt;Server&lt;/span&gt;
+       &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="n"&gt;done&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Después necesitamos instalar unas pyelasticsearch y haystack en el virtualenv de nuestro proyecto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pyelasticsearch&lt;/span&gt;
+    &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;haystack&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Añadimos Haystack a nuestro archivo de configuración de Django:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;django.contrib.auth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;django.contrib.sessions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;django.contrib.sites&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+        &lt;span class="c"&gt;# added&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;haystack&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Añadimos la configuración de elacticsearch también a nuestro settings.py&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;HAYSTACK_CONNECTIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;ENGINE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;URL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://127.0.0.1:9200/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;INDEX_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;haystack&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lo siguiente es indexar los modelos que queremos que aparezcan el las busquedas.
+Para ello añadimos el archivo search_indexes.py en una de nuestras apps:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;haystack&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;indexes&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;News&lt;/span&gt;
+
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;NewsIndex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;indexes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SearchIndex&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;indexes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Indexable&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;indexes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;document&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_template&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c"&gt;#model fields&lt;/span&gt;
+        &lt;span class="n"&gt;caption&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;indexes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model_attr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;caption&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;indexes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model_attr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;author&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;created_at&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;indexes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DateTimeField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model_attr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;created_at&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;News&lt;/span&gt;
+
+        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index_queryset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Used when the entire index for model is updated.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_model&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;created_at__lte&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En este caso en concreto estamos indexando el modelo news, el objeto SearchIndex es el modo en que Haystack determina que datos tendrá el índice.&lt;/p&gt;
+&lt;p&gt;Sólo puede haber un field con con el argumento document=True y es obligatorio, es el primer campo donde buscará.&lt;/p&gt;
+&lt;p&gt;Como añadido le podemos pasar el parámetro use_template=True, si lo hacemos tendremos que crear en el directorio dónde tengamos nuestras templates esta estructura de carpetas search/indexes/myapp/news_text.txt donde news_text.txt será el template  que use para guardar los datos indexados del modelo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;caption&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
+    &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_full_name&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
+    &lt;span class="p"&gt;{{&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt; &lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;También, como en el ejemplo anterior, se pueden usar fields adicionales para añadir filtros adicionales.&lt;/p&gt;
+&lt;p&gt;Ahora sólo nos queda, añadir la url a nuestro URLconf&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^search/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;haystack.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;La template que representará las búsquedas, en templates/search/search.html, que yo formateo con bootstrap jejeje:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;main.html&amp;#39;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;main_content&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;row&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;get&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;table&amp;gt;&lt;/span&gt;
+                &lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;form.as_table&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;nbsp;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;submit&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Search&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;row&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;col-lg-12&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;
+                    Search Results
+                &lt;span class="nt"&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
+                &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;result&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;page.object_list&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;result.object.caption&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tumbnail&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width:200px&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;result.object.file.url&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+                &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;empty&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;span&amp;gt;&lt;/span&gt;No results found.&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+                &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/tbody&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como podéis observar page.object_list es una lista de los objetos devueltos en la busqueda.
+Ya sólo resta crear los indices nuevos desde manage.py:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;rebuild_index&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez funcionando todo, podemos actualizar los índices, con el comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;update_index&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y creo que no me dejo nada más, a mi me ha funcionado, ahora ya tienes la potencia de indexación de lucene en tu projecto web.&lt;/p&gt;
+&lt;p&gt;Saludos!!&lt;/p&gt;
+&lt;h3&gt;Algunos enlaces interesantes:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.elasticsearch.org/download/" target="_blank"&gt;Elasticsearch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://haystacksearch.org/" target="_blank"&gt;Haystack&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/haystack.html" data-via="circun4" data-lang="es"&gt;Twittear&lt;/a&gt;
+&lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');&lt;/script&gt;&lt;/p&gt;</summary><category term="Dajngo"></category><category term="python"></category><category term="elasticsearch"></category><category term="haystack"></category></entry><entry><title>Librería tmxScene python-sfml python</title><link href="http://sergicollado.com/tmxscene.html" rel="alternate"></link><updated>2013-06-20T00:00:00+02:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2013-06-20:tmxscene.html</id><summary type="html">&lt;p&gt;&lt;img alt="sfml" src="http://sergicollado.com/static/images/posts/sfml-logo.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Últimamente me he propuesto hacer juego en python y de paso probar &lt;a href="http://www.python-sfml.org/index.html" target="_blank"&gt;Python-sfml&lt;/a&gt; que me parece muy interesante.&lt;/p&gt;
 &lt;p&gt;El primer paso ha consistedo en crear una librería para poder usar el maravilloso software &lt;a href="http://www.mapeditor.org/" target="_blank"&gt;tiled&lt;/a&gt; y así editar los niveles del juego con toda la potencia que te da esta herramienta.&lt;/p&gt;
 &lt;p&gt;Su utilización es bastante sencilla, hasta que la empaquete y se pueda instalar mediante pip, simplemente debemos clonar el &lt;a href="https://github.com/sergicollado/sceneTmx" target="_blank"&gt;repositorio&lt;/a&gt; el múdulo en cuestión se corresponde con la carpeta scene.&lt;/p&gt;

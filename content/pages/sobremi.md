@@ -8,18 +8,30 @@ Summary: Página sobre mí
 
 Soy un entusiasta de la programación en general.
 
-Como informático he enfocado mi carrera profesional de forma multidisciplinar, siendo capaz de desarrollar aplicaciones web y de escritorio en varios lenguajes.
+###Front-end development:
+* html5, css3, responsive design, Foundation, Bootstrap
+* Javascript, Jquery, Backbone, RequireJs
+* TDD, Jasmine.
+
+###Back-end development
+* Python, PHP, Ruby, TDD.
+* Django, Codeigniter, Yii, Sinatra.
+* Mysql, Apache, WSGI
+
+
 Me gusta el Software libre, Python y Git.
 
 Mi experiencia laboral está asentada por un conocimiento equilibrado entre el desarrollo de aplicaciones y la capacidad de adaptarme fácilmente a las nuevas tecnologías y los cambios del software.
 
-He trabajado en el diseño de interfaces y progamación en PHP, Javascript, sql, diversos frameworks como Yii, Ror, Django Codeigniter, Jquery... etc. así como en realización de 3d,
+He trabajado en la progamación web TDD en Python, PHP, Javascript, sql, diversos frameworks como Yii, Django Codeigniter, Jquery, BackBone, RequireJs, CoffeeScript
+
 
 Siempre con ganas de mejorar, me involucro al máximo en los proyectos, tengo rapidez de adaptación tanto profesional como personalmente.
 
-Especialidades:Desarrollo de aplicaciones en entorno web, backend, usabilidad y creación de interfaces así como gráficos multimédia.
+Especialidades:Desarrollo de aplicaciones en entorno web, Django backend y Js.
     
 Si quieres contactar conmigo escríbeme a: sergicollado@gmail.com o hi@sergicollado.com
+
 ###Redes sociales:
 * [LinkedIn](http://es.linkedin.com/in/sergicollado/){:target="_blank"}
 * [Twitter](https://twitter.com/circun4){:target="_blank"}
