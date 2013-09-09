@@ -1,7 +1,7 @@
 Title: Haystack, ElasticSearch en Django
 Category: Dev
 date:  23-08-2013
-Tags: Dajngo, python, elasticsearch, haystack
+Tags: Django, python, elasticsearch, haystack
 Slug: haystack
 Author: Sergi Collado
 Summary: Usar elasticksearch desde un proyecto web Django

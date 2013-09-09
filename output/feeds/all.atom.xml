@@ -1,5 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Sergi Collado</title><link href="http://sergicollado.com/" rel="alternate"></link><link href="http://sergicollado.com/feeds/all.atom.xml" rel="self"></link><id>http://sergicollado.com/</id><updated>2013-08-23T00:00:00+02:00</updated><entry><title>Haystack, ElasticSearch en Django</title><link href="http://sergicollado.com/haystack.html" rel="alternate"></link><updated>2013-08-23T00:00:00+02:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2013-08-23:haystack.html</id><summary type="html">&lt;p&gt;&lt;img alt="elasticsearch" src="http://sergicollado.com/static/images/posts/elasticsearch.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Sergi Collado</title><link href="http://sergicollado.com/" rel="alternate"></link><link href="http://sergicollado.com/feeds/all.atom.xml" rel="self"></link><id>http://sergicollado.com/</id><updated>2013-09-09T00:00:00+02:00</updated><entry><title>Javascript modular con RequireJs</title><link href="http://sergicollado.com/requireJs.html" rel="alternate"></link><updated>2013-09-09T00:00:00+02:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2013-09-09:requireJs.html</id><summary type="html">&lt;p&gt;&lt;img alt="RequireJs" src="http://sergicollado.com/static/images/posts/requirejs.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.requirejs.org/" target="_blank"&gt;RequireJs&lt;/a&gt; Es una librería Javascript que nos permite aislar modularmente los componentes de nuestra aplicación cliente.
+Se gestiona a través de un punto único de entrada, ayudándonos a estructurar mejor nuestro código, en el que podremos definir las dependencias globales de nuestra aplicación, si es que son necesarias e incluso compilarlo todo en un único archivo.&lt;/p&gt;
+&lt;p&gt;Manos a la obra!&lt;br /&gt;
+Primero deberíamos descagar   &lt;a href="http://requirejs.org/docs/release/2.1.8/minified/require.js" target="_blank"&gt;RequireJs&lt;/a&gt; de su web,
+y organizar un poco la estructura de nuestra aplicación:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt;root_app/&lt;/span&gt;
+&lt;span class="cm"&gt;├── js&lt;/span&gt;
+&lt;span class="cm"&gt;│   ├── helpers&lt;/span&gt;
+&lt;span class="cm"&gt;│   │   └── utils.js&lt;/span&gt;
+&lt;span class="cm"&gt;│   ├── main.js&lt;/span&gt;
+&lt;span class="cm"&gt;│   ├── require.js&lt;/span&gt;
+&lt;span class="cm"&gt;│   └── vendor&lt;/span&gt;
+&lt;span class="cm"&gt;│       └── jquery-1.10.2.min.js&lt;/span&gt;
+&lt;span class="cm"&gt;└── index.html&lt;/span&gt;
+&lt;span class="cm"&gt;*/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;root_app&lt;/em&gt; es la raíz  donde vamos a trabajar, el archivo index.html es el que hará la llamada al scripts script principal de &lt;em&gt;requirejs&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;My Project&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;data-main=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;js/main&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;js/require.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;My  RequireJs Project&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como se puede observar en la etiqueta script enlazamos la librería &lt;em&gt;requirejs&lt;/em&gt; y en el atributo &lt;em&gt;data_main&lt;/em&gt; enlazaremos nuestro script de entrada.&lt;/p&gt;
+&lt;p&gt;Vamos ahora a ir escribiendo nuestro script y viendo que todo ha ido como esperábamos.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="nx"&gt;baseUrl&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En &lt;em&gt;baseUrl&lt;/em&gt; hemos configurado la ruta raíz de nuestra aplicación js, todos los archivos que añadamos a partir de aquí tendrán que ser relativos a la misma.
+Yo normalmente uso jQuery, como podéis observar arriba, la he metido en la carpeta vendor, y ahora voy a añadirla a a require.config para poder usarla fácilmente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="nx"&gt;baseUrl&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nx"&gt;paths&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;jquery&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;vendor/jquery-1.10.2.min&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ale, ya la tenemos a punto, simplemente la añadimos a paths, la clave es e nombre con el que queremos llamarla posteriormente,  &lt;em&gt;require&lt;/em&gt; automáticamente le añade la teminación &lt;em&gt;.js&lt;/em&gt; así que no debéis ponersela, acordáos de que la ruta debe partir de la que tengamos en &lt;em&gt;baseUrl&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Ahora que ya tenemos un sencillo contexto configurado, vamos a crear un primer módulo y añadirlo a &lt;em&gt;main.js&lt;/em&gt; debajo del config&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;requirejs&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;helpers/utils&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Utils&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Utils&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;helloWorld&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;el método &lt;em&gt;requirejs&lt;/em&gt; admite como primer parámetro un array con las direcciones de los módulos que queramos utilizar dentro del mismo, como segundo parámetro tenemos una función que recibe como parámetros los mudulos descritos antes, es el momento de dar una buena semántica a los mismos. Así tenemos dentro de esta función un contexto único y aislado.&lt;/p&gt;
+&lt;p&gt;En el ejemplo de arriba yo le he pasado el módulo utils, que se encuentra dentro de la carpeta helpers, ahora  ya lo tenemos listo para usarse bajo el nombre Utils, en este caso es un simple objeto js clave valor, pero podría ser una función, una clase, etc ...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;helpers&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;utils&lt;/span&gt;
+&lt;span class="nx"&gt;define&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="nx"&gt;helloWorld&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;hola&amp;#39;&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;utils.js&lt;/em&gt; usa el modo más sencillo de crear un ḿodulo, como no depende de ningún otro módulo no necesitamos pasarlo como parámetro, es interesante que leáis en la documetación los distintos tipos de &lt;a href="http://requirejs.org/docs/api.html#funcmodule" target="_blank"&gt;módulos&lt;/a&gt; que podéis hacer.&lt;/p&gt;
+&lt;p&gt;Por ejemplo, vamos a volver a &lt;em&gt;main.js&lt;/em&gt; y usar jQuery en el módulo principal, quedaría así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="nx"&gt;baseUrl&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nx"&gt;paths&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;jquery&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;vendor/jquery-1.10.2.min&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+
+&lt;span class="nx"&gt;requirejs&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;jquery&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;helpers/utils&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;Util&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;helloWorls&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como podéis ver, simplemente añadimos al array una cadena con el nombre que en &lt;em&gt;require.config&lt;/em&gt; le hemos asignado como clave, luego lo ponemos como parámetro en la función anónima que ejecutará nuestro código. Ya tenemos disponible jQueryy lo podemos usar con el carácter $.&lt;/p&gt;
+&lt;p&gt;Ahora si vemos nuestro archivo &lt;em&gt;index.html&lt;/em&gt; en un navegador, podremos observar como el console.log muestra 'hola' y la función de &lt;em&gt;jQuery&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Si os habéis perdido, he subido los archivos a mi &lt;a href="https://github.com/sergicollado/requirejs_tutorial" target="_blank"&gt;git-hub&lt;/a&gt; donde lé podréis echar un vistazo con más calma.&lt;/p&gt;
+&lt;p&gt;Esto es simplemente el comienzo, ahora solo os queda usar alguna librería de TDD como &lt;a href="http://pivotal.github.io/jasmine/" target="_blank"&gt;Jasmine&lt;/a&gt; y no volver a hacer ese máldito código spaguetti que tanto cuesta de mantener, &lt;/p&gt;
+&lt;p&gt;Y recordad que :
+¡con javascript todo no vale!&lt;/p&gt;
+&lt;p&gt;Saludos!!&lt;/p&gt;
+&lt;h3&gt;Algunos enlaces interesantes:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.requirejs.org/" target="_blank"&gt;RequireJs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/requireJs.html" data-via="circun4" data-lang="es"&gt;Twittear&lt;/a&gt;
+&lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');&lt;/script&gt;&lt;/p&gt;</summary><category term="Javascript"></category><category term="Front-End"></category><category term="RequireJs"></category><category term="Js"></category><category term=""></category></entry><entry><title>Haystack, ElasticSearch en Django</title><link href="http://sergicollado.com/haystack.html" rel="alternate"></link><updated>2013-08-23T00:00:00+02:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2013-08-23:haystack.html</id><summary type="html">&lt;p&gt;&lt;img alt="elasticsearch" src="http://sergicollado.com/static/images/posts/elasticsearch.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.elasticsearch.org/" target="_blank"&gt;Elasticsearch&lt;/a&gt; es una herramienta open source flexible y poderosa, un motor de búsquedas y analíticas real-time distribuido, cuyo corazón es el famoso proyecto Java Lucene.&lt;/p&gt;
 &lt;p&gt;En esta entrada no pretendo hacer un manual extenso sobre este magnífico proyecto open source, si no describir los pasos básicos que se deben seguir para usarlo en nuestras aplicaciones web Django, a través de &lt;a href="http://haystacksearch.org/" target="_blank"&gt;Haystack&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://haystacksearch.org/"&gt;Haystack&lt;/a&gt; es una librería para Django que nos sirve para usar motores de búsqueda a través  de su API, se integra pefectamente con el workflow del Framework y nos permite usar varios motores como &lt;a href="http://lucene.apache.org/solr/" target="_blank"&gt;Solr&lt;/a&gt;,&lt;a href="https://bitbucket.org/mchaput/whoosh/wiki/Home" target="_blank"&gt;whoosh&lt;/a&gt;,etc...&lt;/p&gt;
@@ -142,7 +240,7 @@ Ya sólo resta crear los indices nuevos desde manage.py:&lt;/p&gt;
 &lt;li&gt;&lt;a href="http://haystacksearch.org/" target="_blank"&gt;Haystack&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/haystack.html" data-via="circun4" data-lang="es"&gt;Twittear&lt;/a&gt;
-&lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');&lt;/script&gt;&lt;/p&gt;</summary><category term="Dajngo"></category><category term="python"></category><category term="elasticsearch"></category><category term="haystack"></category></entry><entry><title>Librería tmxScene python-sfml python</title><link href="http://sergicollado.com/tmxscene.html" rel="alternate"></link><updated>2013-06-20T00:00:00+02:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2013-06-20:tmxscene.html</id><summary type="html">&lt;p&gt;&lt;img alt="sfml" src="http://sergicollado.com/static/images/posts/sfml-logo.png" /&gt;&lt;/p&gt;
+&lt;script&gt;!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');&lt;/script&gt;&lt;/p&gt;</summary><category term="Django"></category><category term="python"></category><category term="elasticsearch"></category><category term="haystack"></category></entry><entry><title>Librería tmxScene python-sfml python</title><link href="http://sergicollado.com/tmxscene.html" rel="alternate"></link><updated>2013-06-20T00:00:00+02:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2013-06-20:tmxscene.html</id><summary type="html">&lt;p&gt;&lt;img alt="sfml" src="http://sergicollado.com/static/images/posts/sfml-logo.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Últimamente me he propuesto hacer juego en python y de paso probar &lt;a href="http://www.python-sfml.org/index.html" target="_blank"&gt;Python-sfml&lt;/a&gt; que me parece muy interesante.&lt;/p&gt;
 &lt;p&gt;El primer paso ha consistedo en crear una librería para poder usar el maravilloso software &lt;a href="http://www.mapeditor.org/" target="_blank"&gt;tiled&lt;/a&gt; y así editar los niveles del juego con toda la potencia que te da esta herramienta.&lt;/p&gt;
 &lt;p&gt;Su utilización es bastante sencilla, hasta que la empaquete y se pueda instalar mediante pip, simplemente debemos clonar el &lt;a href="https://github.com/sergicollado/sceneTmx" target="_blank"&gt;repositorio&lt;/a&gt; el múdulo en cuestión se corresponde con la carpeta scene.&lt;/p&gt;
