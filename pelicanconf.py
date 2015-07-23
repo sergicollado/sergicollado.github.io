@@ -4,8 +4,9 @@ from __future__ import unicode_literals
 
 AUTHOR = 'sergicollado@gmail.com'
 SITENAME = 'sergiDev'
-SITEURL = ''
-SITESUBTITLE = u'TDD Developer, Python, Agile Javascript coder and better human, I like vegetarian food and GameDev.'
+SITEURL = 'http://localhost:8000/'
+SITESUBTITLE = 'TDD Developer, Python, Agile Javascript coder and better human, I like vegetarian food and GameDev.'
+TAGLINE = 'Coder and better human, I like vegetarian food and GameDev.'
 
 PATH = 'content'
 
