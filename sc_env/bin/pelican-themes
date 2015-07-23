@@ -1,9 +1,0 @@
-#!/home/sergi/dev/sergiblog/sc_env/bin/python
-# EASY-INSTALL-ENTRY-SCRIPT: 'pelican==3.2','console_scripts','pelican-themes'
-__requires__ = 'pelican==3.2'
-import sys
-from pkg_resources import load_entry_point
-
-sys.exit(
-   load_entry_point('pelican==3.2', 'console_scripts', 'pelican-themes')()
-)

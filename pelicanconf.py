@@ -14,8 +14,8 @@ TIMEZONE = 'Europe/Paris'
 DEFAULT_LANG = u'es'
 
 # Feed generation is usually not desired when developing
-FEED_DOMAIN = SITEURL
-FEED_ALL_ATOM = True
+#FEED_DOMAIN = SITEURL
+#FEED_ALL_ATOM = True
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
@@ -34,14 +34,14 @@ DEFAULT_PAGINATION = 10
 
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True 
+#RELATIVE_URLS = True
 
 
 #DEFAULT_DATE_FORMAT = ('%b %d %Y') : suggested date format
 SITESUBTITLE = u'TDD Developer, Python, Agile Javascript coder and better human, I like vegetarian food.'
 #FOOTER_TEXT = 'Replace pelican credit'
-DISPLAY_CATEGORIES_ON_MENU = False
+#DISPLAY_CATEGORIES_ON_MENU = False
 #LINKS = (('Site', 'http://url.com'), ('Site 2', 'http://another.url.com'))
-SINGLE_AUTHOR = True
-MINT = True
+#SINGLE_AUTHOR = True
+#MINT = True
 GOOGLE_ANALYTICS = "UA-41990150-1"
