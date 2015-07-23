@@ -5,6 +5,8 @@ Tags: Django, python, elasticsearch, haystack
 Slug: haystack
 Author: Sergi Collado
 Summary: Usar elasticksearch desde un proyecto web Django
+email:sergicollado@gmail.com
+
 
 
 ![elasticsearch](|filename|/images/posts/elasticsearch.png)
@@ -22,7 +24,7 @@ Ahora tenemos que iniciarlo como servicio:
     :::shell
         sudo service elasticsearch start
 
-        [sudo] password for sergi: 
+        [sudo] password for sergi:
          * Starting ElasticSearch Server
            ...done.
 
@@ -46,23 +48,23 @@ Añadimos Haystack a nuestro archivo de configuración de Django:
             # added
             'haystack',
         ]
-           
+
 Añadimos la configuración de elacticsearch también a nuestro settings.py
 
-    :::python 
+    :::python
         HAYSTACK_CONNECTIONS = {
             'default': {
                 'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
                 'URL': 'http://127.0.0.1:9200/',
                 'INDEX_NAME': 'haystack',
             },
-        } 
+        }
 
 
 Lo siguiente es indexar los modelos que queremos que aparezcan el las busquedas.
 Para ello añadimos el archivo search_indexes.py en una de nuestras apps:
 
-    :::python 
+    :::python
         import datetime
         from haystack import indexes
         from .models import News
@@ -98,7 +100,7 @@ También, como en el ejemplo anterior, se pueden usar fields adicionales para a�
 
 Ahora sólo nos queda, añadir la url a nuestro URLconf
 
-    :::python 
+    :::python
         url(r'^search/', include('haystack.urls'))
 
 La template que representará las búsquedas, en templates/search/search.html, que yo formateo con bootstrap jejeje:
@@ -139,17 +141,17 @@ La template que representará las búsquedas, en templates/search/search.html, q
             </div>
         </div>
 
-        {% endblock %}    
+        {% endblock %}
 
 Como podéis observar page.object_list es una lista de los objetos devueltos en la busqueda.
 Ya sólo resta crear los indices nuevos desde manage.py:
-    
-    :::python 
+
+    :::python
         ./manage.py rebuild_index
 
 Una vez funcionando todo, podemos actualizar los índices, con el comando:
 
-    :::python 
+    :::python
         ./manage.py update_index
 
 

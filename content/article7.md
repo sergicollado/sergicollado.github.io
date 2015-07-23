@@ -1,10 +1,12 @@
 Title: Javascript modular con RequireJs
 Category: Javascript
 date:  09-09-2013
-Tags: Javascript, Front-End, RequireJs, Js, 
+Tags: Javascript, Front-End, RequireJs, Js,
 Slug: requireJs
 Author: Sergi Collado
 Summary: Empieza ha desarrollar javascript más modular con RequireJs
+email:sergicollado@gmail.com
+
 
 
 ![RequireJs](|filename|/images/posts/requirejs.png)
@@ -12,7 +14,7 @@ Summary: Empieza ha desarrollar javascript más modular con RequireJs
 [RequireJs](http://www.requirejs.org/){:target="_blank"} Es una librería Javascript que nos permite aislar modularmente los componentes de nuestra aplicación cliente.
 Se gestiona a través de un punto único de entrada, ayudándonos a estructurar mejor nuestro código, en el que podremos definir las dependencias globales de nuestra aplicación, si es que son necesarias e incluso compilarlo todo en un único archivo.
 
-Manos a la obra!  
+Manos a la obra!
 Primero deberíamos descagar   [RequireJs](http://requirejs.org/docs/release/2.1.8/minified/require.js){:target="_blank"} de su web,
 y organizar un poco la estructura de nuestra aplicación:
 
@@ -105,7 +107,7 @@ Ahora si vemos nuestro archivo *index.html* en un navegador, podremos observar c
 
 Si os habéis perdido, he subido los archivos a mi [git-hub](https://github.com/sergicollado/requirejs_tutorial){:target="_blank"} donde lé podréis echar un vistazo con más calma.
 
-Esto es simplemente el comienzo, ahora solo os queda usar alguna librería de TDD como [Jasmine](http://pivotal.github.io/jasmine/){:target="_blank"} y no volver a hacer ese máldito código spaguetti que tanto cuesta de mantener, 
+Esto es simplemente el comienzo, ahora solo os queda usar alguna librería de TDD como [Jasmine](http://pivotal.github.io/jasmine/){:target="_blank"} y no volver a hacer ese máldito código spaguetti que tanto cuesta de mantener,
 
 Y recordad que :
 ¡con javascript todo no vale!

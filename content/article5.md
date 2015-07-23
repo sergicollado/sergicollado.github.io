@@ -5,6 +5,8 @@ Tags: tmx, python, sfml, tmxScene, tiled
 Slug: tmxscene
 Author: Sergi Collado
 Summary: Primeros pasos para renderizar entornos de tiles creados por Tiled
+email:sergicollado@gmail.com
+
 
 
 ![sfml](|filename|/images/posts/sfml-logo.png)
@@ -20,7 +22,7 @@ tmxScene tiene como dependecia el módulo tmxlib y lo he desarrollado en Python 
     :::shell
         pip install tmxlib
 
-El repositorio es en sí mismo un ejemplo de como se puede utilizar, puedes echar un vistazo al script de entrada main.py 
+El repositorio es en sí mismo un ejemplo de como se puede utilizar, puedes echar un vistazo al script de entrada main.py
 
     :::python
         import sfml as sf
@@ -40,7 +42,7 @@ El repositorio es en sí mismo un ejemplo de como se puede utilizar, puedes echa
 
         try:
             texture = sf.Texture.from_file(IMAGES_PATH+"twilight-tiles.png")
-            
+
             sprites = drawables.Sprites()
             scene = scene.Scene(MAPS_PATH+"textMap.tmx", width, height, sprites)
             scene.set_images_path(IMAGES_PATH)
@@ -50,10 +52,10 @@ El repositorio es en sí mismo un ejemplo de como se puede utilizar, puedes echa
             ]
             scene.set_visible_layers(layers)
 
-            
+
             player = character.Character(IMAGES_PATH+"mikeypebalz.png", 57,101, sprites)
             player.set_velocity(10)
-        except IOError: 
+        except IOError:
             print IOError
             exit(1)
 
@@ -78,13 +80,13 @@ El repositorio es en sí mismo un ejemplo de como se puede utilizar, puedes echa
                     scene.cam.panning_down()
 
             time  = clock.restart().seconds*10
-            window.clear() 
+            window.clear()
             scene.update(time)
             scene.render(window)
             player.update(time)
             player.render(window)
-            window.display() 
-    
+            window.display()
+
 ###Algunos enlaces interesantes:
 * [tiled](http://www.mapeditor.org/){:target="_blank"}
 * [repositorio](https://github.com/sergicollado/sceneTmx){:target="_blank"}

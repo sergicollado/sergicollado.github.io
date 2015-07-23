@@ -1,70 +1,75 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 <head>
-		<title>Sergi Collado &mdash; Extendiendo Model CActiveRecord</title>
-		<meta charset="utf-8" />
-		<link rel="profile" href="http://gmpg.org/xfn/11" />
-		<link rel="stylesheet" type="text/css" href="http://sergicollado.com/theme/css/style.css" />
-		<link rel='stylesheet' id='oswald-css'  href='http://fonts.googleapis.com/css?family=Oswald&#038;ver=3.3.2' type='text/css' media='all' />
-		<style type="text/css">
-			body.custom-background { background-color: #f5f5f5; }
-		</style>
-		<link rel="alternate" type="application/atom+xml"
-			title="Sergi Collado — Flux Atom"
-			href="http://sergicollado.com/" /> 
-		<!--[if lte IE 8]><script src="http://sergicollado.com/theme/js/html5shiv.js"></script><![endif]-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="sergiDev, ">
+
+
+        <title>Extendiendo Model CActiveRecord // sergiDev // </title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/pure.css">
+    <link rel="stylesheet" href="/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
 </head>
 
-<body class="home blog custom-background " >
-<a href="http://github.com/sergicollado/">
-<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
-</a>
-	<div id="container">
-		<div id="header">
-				<h1 id="site-title"><a href="http://sergicollado.com">Sergi Collado</a></h1>
-		</div><!-- /#banner -->
-		
-<h2 id="site-description">TDD Developer, Python, Agile Javascript coder and better human, I like vegetarian food.</h2>		<div id="menu">
-			<div class="menu-navigation-container">
-				<ul id="menu-navigation" class="menu">
-						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://sergicollado.com/pages/proyectos.html">proyectos</a></li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://sergicollado.com/pages/sobremi.html">Sobre mí</a></li>
-						<li class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://sergicollado.com/category/dev.html">Dev</a></li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://sergicollado.com/category/javascript.html">Javascript</a></li>
-						<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://sergicollado.com/category/personal.html">personal</a></li>
-						<li  class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://cuble.es" target="_blank">Cuble</a></li>
-						<li  class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://becodemyfriend.com" target="_blank">Becode</a></li>
-						<li  class="active" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://github.com/sergicollado" target="_blank">GIT-HUB</a></li>
-
-				</ul>
-			</div> <!--/#menu-navigation-container-->
-		</div><!-- /#menu -->
-		
-		<div class="page-title">
-		</div>
-	
-		<div id="contents">
-
-<div class="post type-post status-publish format-standard hentry category-general" id="post">
-	<div class="entry-meta">
-		<div class="date"><a href="http://sergicollado.com/YiiExtendsModel.html">lun 05 agosto 2013</a></div>
-		<span class="byline">By <a href="http://sergicollado.com/author/sergi-collado.html">Sergi Collado</a></span>
-			<div class="comments"><a href="http://sergicollado.com/YiiExtendsModel.html#disqus_thread" title="Comment on Extendiendo Model CActiveRecord">comments</a></div>
-			<span class="cat-links"><a href="http://sergicollado.com/category/dev.html" title="View all posts in Dev" rel="category tag">Dev</a></span>
-	</div> <!-- /#entry-meta -->
-	<div class="main">
-		<h2 class="entry-title">
-			<a href="http://sergicollado.com/YiiExtendsModel.html" title="Permalink to Extendiendo Model CActiveRecord" rel="bookmark">Extendiendo Model CActiveRecord</a>
-		</h2>
-		<div class="entry-content">
-			<p>La mayoría de Frameworks para crear webs, nos sirven de gran ayuda a la hora de estructurar nuestro código y ayudarnos con miles de funcionalidades.
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('images/side.png')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <img class="avatar" src="images/cosmo.png">
+                            <h1 class="brand-main"><a href="">sergiDev</a></h1>
+                            <p class="tagline"></p>
+                                <p class="social">
+                                    <a href="http://www.linkedin.com/in/sergicollado">
+                                        <i class="fa fa-linkedin-square fa-3x"></i>
+                                    </a>
+                                    <a href="https://plus.google.com/u/0/108686854890472733391/about">
+                                        <i class="fa fa-google-plus fa-3x"></i>
+                                    </a>
+                                    <a href="https://twitter.com/circun4">
+                                        <i class="fa fa-twitter-square fa-3x"></i>
+                                    </a>
+                                </p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Extendiendo Model CActiveRecord</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="/tag/php.html">php</a>
+                                <a class="post-category" href="/tag/yii.html">Yii</a>
+                                <a class="post-category" href="/tag/activerecord.html">ActiveRecord</a>
+                                <a class="post-category" href="/tag/extends.html">extends</a>
+                        </p>
+                </header>
+            </section>
+            <p>La mayoría de Frameworks para crear webs, nos sirven de gran ayuda a la hora de estructurar nuestro código y ayudarnos con miles de funcionalidades.
 A veces estas ventajas se transforman en desventajas, dificultando la versatilidad de la toma de decisiones, haciéndonos perder más tiempo del que debíeramos.</p>
 <p>Últimamente he usado el Framework Yii, en un par de proyectos.
 En Yii se pueden crear módulos, widgets y componentes, así puedes descargar la lógica de los controladores, consiguiendo un código más legible.</p>
-<p>Puedes encontrar el código en <a href="https://github.com/sergicollado/blog-examples/blob/master/CModelWithFile.php" target="_blank">MiGitHub</a> </p>
+<p>Puedes encontrar el código en <a href="https://github.com/sergicollado/blog-examples/blob/master/CModelWithFile.php" target="_blank">MiGitHub</a></p>
 <p>Cómo ejemplo me voy a centrar en una clase que he hecho estos días:</p>
 <div class="highlight"><pre><span class="cp">&lt;?php</span>
-<span class="c1">//A field named &#39;file&#39; is required&#39; </span>
+<span class="c1">//A field named &#39;file&#39; is required&#39;</span>
 <span class="k">class</span> <span class="nc">CModelWithFile</span> <span class="k">extends</span> <span class="nx">CActiveRecord</span><span class="p">{</span>
 
     <span class="k">public</span> <span class="nv">$file_uploaded</span><span class="p">;</span>
@@ -134,7 +139,7 @@ Además Yii te ofrece una manera fácil de validar atributos que llegan de un po
 Si toda la lógica necesaria para ambas cosas las dejamos en un método del controlador, el resultado es un montón de código repetido.</p>
 <p>Para que funcione esta clase, tendríamos que tener una columna de tipoo string llamada 'file';
 El modo de uso es muy sencillo :</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span> 
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Project&#39;</span><span class="p">]))</span>
 <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="nv">$model</span><span class="o">-&gt;</span><span class="na">saveWithImage</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Project&#39;</span><span class="p">]))</span>
@@ -152,55 +157,66 @@ El modo de uso es muy sencillo :</p>
 </ul>
 <p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/YiiExtendsModel.html" data-via="circun4" data-lang="es">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
-<p><img alt="YiiLogo" src="http://sergicollado.com/images/posts/yii.png" /></p>
-		</div> <!--/#entry-content-->
-    		<span class="tag-links"><strong>Tagged</strong>
- <a href="http://sergicollado.com/tag/activerecord.html" rel="tag">ActiveRecord</a>,  <a href="http://sergicollado.com/tag/extends.html" rel="tag">extends</a>,  <a href="http://sergicollado.com/tag/php.html" rel="tag">php</a>,  <a href="http://sergicollado.com/tag/yii.html" rel="tag">Yii</a>    		</span>
-	</div> <!--/#main-->
-</div>  <!--/#post-->
-	<div id="comments">
-		<div id="respond">
-			<div id="disqus_thread"></div>
-	        <script type="text/javascript">
-	            var disqus_shortname = 'sergicollado';
-	
-	            /* * * DON'T EDIT BELOW THIS LINE * * */
-	            (function() {
-	                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-	                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	            })();
-	        </script>
-	        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-		</div><!-- #respond -->					
-</div><!-- #comments -->
+<p><img alt="YiiLogo" src="/images/posts/yii.png" /></p>
+            <a href="#" class="go-top">Go Top</a>
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "sergicollado"; // required: replace example with your forum shortname
 
-		</div>
-		
-		<div id="footer">
-			<p>Powered by <a href="http://getpelican.com">Pelican</a>, theme by <a href="http://bunnyman.info">tBunnyMan</a>.</p>
-				<script type="text/javascript">
-					var _gaq = _gaq || [];
-					_gaq.push(['_setAccount', 'UA-41990150-1']);
-					_gaq.push(['_trackPageview']);
-					(function() {
-						var ga = document.createElement('script'); 
-						ga.type = 'text/javascript'; ga.async = true;
-						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-					})();
-				</script>
-<script type="text/javascript">
-    var disqus_shortname = 'sergicollado';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>		</div><!-- /#footer -->
-	</div><!-- /#container -->
-	<div style="display:none"></div>
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+<footer class="footer">
+    <p>&copy; sergicollado@gmail.com &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-41990150-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+
 </body>
 </html>

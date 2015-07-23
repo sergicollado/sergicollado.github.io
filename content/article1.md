@@ -5,6 +5,7 @@ Tags: pelican, hello, dev, python
 Slug: my-first-post
 Author: Sergi Collado
 Summary: hello world
+email:sergicollado@gmail.com
 
 Hello World!
 
