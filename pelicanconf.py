@@ -21,10 +21,10 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 DISPLAY_PAGES_ON_MENU = True
-MENUITEMS = (
-    ('sobre mí', 'pages/sobremi.html'),
-    ('my games', 'pages/videogames.html'),
-)
+#MENUITEMS = (
+    #('sobre mí', 'pages/sobremi.html'),
+    #('my games', 'pages/videogames.html'),
+#)
 
 # Blogroll
 #LINKS = (('Pelican', 'http://getpelican.com/'),
