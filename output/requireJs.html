@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="sergiDev, ">
+    <meta name="description" content="sergiDev, Coder and better human, I like vegetarian food and GameDev.">
 
 
-        <title>Javascript modular con RequireJs // sergiDev // </title>
+        <title>Javascript modular con RequireJs // sergiDev // Coder and better human, I like vegetarian food and GameDev.</title>
 
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/theme/css/pure.css">
-    <link rel="stylesheet" href="/theme/css/pygments.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pure.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pygments.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
@@ -26,21 +26,25 @@
 <body>
     <div class="pure-g-r" id="layout">
         <div class="sidebar pure-u">
-            <div class="cover-img" style="background-image: url('images/side.png')">
+            <div class="cover-img" style="background-image: url('images/rwd2.jpg')">
                 <div class="cover-body">
                     <header class="header">
                         <hgroup>
-                            <img class="avatar" src="images/cosmo.png">
-                            <h1 class="brand-main"><a href="">sergiDev</a></h1>
-                            <p class="tagline"></p>
+                            <img class="avatar" src="images/avatar.png">
+                            <h1 class="brand-main"><a href="http://localhost:8000">sergiDev</a></h1>
+                            <p class="tagline">Coder and better human, I like vegetarian food and GameDev.</p>
+                                <p class="links"><a href="pages/sobremi.html">sobre mí</a></p>
+                                <p class="links"><a href="pages/videogames.html">my games</a></p>
+                                <p class="links"><a href="http://localhost:8000/pages/videogames">videogames</a></p>
+                                <p class="links"><a href="http://localhost:8000/pages/sobremi">Sobre mí</a></p>
                                 <p class="social">
-                                    <a href="http://www.linkedin.com/in/sergicollado">
-                                        <i class="fa fa-linkedin-square fa-3x"></i>
+                                    <a href="https://github.com/sergicollado">
+                                        <i class="fa fa-git-square fa-3x"></i>
                                     </a>
-                                    <a href="https://plus.google.com/u/0/108686854890472733391/about">
-                                        <i class="fa fa-google-plus fa-3x"></i>
+                                    <a href="http://sergicollado.itch.io">
+                                        <i class="fa fa-gamepad fa-3x"></i>
                                     </a>
-                                    <a href="https://twitter.com/circun4">
+                                    <a href="https://twitter.com/sergi_py">
                                         <i class="fa fa-twitter-square fa-3x"></i>
                                     </a>
                                 </p>
@@ -55,20 +59,20 @@
                 <header class="post-header">
                     <h1>Javascript modular con RequireJs</h1>
                         <p class="post-meta">
-                            // under                                 <a class="post-category" href="/tag/javascript.html">Javascript</a>
-                                <a class="post-category" href="/tag/front-end.html">Front-End</a>
-                                <a class="post-category" href="/tag/requirejs.html">RequireJs</a>
-                                <a class="post-category" href="/tag/js.html">Js</a>
+                            // under                                 <a class="post-category" href="http://localhost:8000/tag/javascript.html">Javascript</a>
+                                <a class="post-category" href="http://localhost:8000/tag/front-end.html">Front-End</a>
+                                <a class="post-category" href="http://localhost:8000/tag/requirejs.html">RequireJs</a>
+                                <a class="post-category" href="http://localhost:8000/tag/js.html">Js</a>
                         </p>
                 </header>
             </section>
-            <p><img alt="RequireJs" src="/images/posts/requirejs.png" /></p>
+            <p><img alt="RequireJs" src="http://localhost:8000/images/posts/requirejs.png" /></p>
 <p><a href="http://www.requirejs.org/" target="_blank">RequireJs</a> Es una librería Javascript que nos permite aislar modularmente los componentes de nuestra aplicación cliente.
 Se gestiona a través de un punto único de entrada, ayudándonos a estructurar mejor nuestro código, en el que podremos definir las dependencias globales de nuestra aplicación, si es que son necesarias e incluso compilarlo todo en un único archivo.</p>
 <p>Manos a la obra!
 Primero deberíamos descagar   <a href="http://requirejs.org/docs/release/2.1.8/minified/require.js" target="_blank">RequireJs</a> de su web,
 y organizar un poco la estructura de nuestra aplicación:</p>
-<div class="highlight"><pre>/*
+<div class="highlight"><pre><span></span>/*
 root_app/
 ├── js
 │   ├── helpers
@@ -83,22 +87,22 @@ root_app/
 
 
 <p><em>root_app</em> es la raíz  donde vamos a trabajar, el archivo index.html es el que hará la llamada al scripts script principal de <em>requirejs</em></p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;title&gt;</span>My Project<span class="nt">&lt;/title&gt;</span>
-        <span class="nt">&lt;script </span><span class="na">data-main=</span><span class="s">&quot;js/main&quot;</span> <span class="na">src=</span><span class="s">&quot;js/require.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
-        <span class="nt">&lt;h1&gt;</span>My  RequireJs Project<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Project<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">data-main</span><span class="o">=</span><span class="s">&quot;js/main&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/require.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My  RequireJs Project<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 
 
 <p>Como se puede observar en la etiqueta script enlazamos la librería <em>requirejs</em> y en el atributo <em>data_main</em> enlazaremos nuestro script de entrada.</p>
 <p>Vamos ahora a ir escribiendo nuestro script y viendo que todo ha ido como esperábamos.</p>
-<div class="highlight"><pre><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
     <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;js&#39;</span><span class="p">,</span>
 <span class="p">});</span>
 </pre></div>
@@ -106,7 +110,7 @@ root_app/
 
 <p>En <em>baseUrl</em> hemos configurado la ruta raíz de nuestra aplicación js, todos los archivos que añadamos a partir de aquí tendrán que ser relativos a la misma.
 Yo normalmente uso jQuery, como podéis observar arriba, la he metido en la carpeta vendor, y ahora voy a añadirla a a require.config para poder usarla fácilmente:</p>
-<div class="highlight"><pre><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
     <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;js&#39;</span><span class="p">,</span>
     <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">jquery</span><span class="o">:</span> <span class="s1">&#39;vendor/jquery-1.10.2.min&#39;</span><span class="p">,</span>
@@ -117,7 +121,7 @@ Yo normalmente uso jQuery, como podéis observar arriba, la he metido en la carp
 
 <p>Ale, ya la tenemos a punto, simplemente la añadimos a paths, la clave es e nombre con el que queremos llamarla posteriormente,  <em>require</em> automáticamente le añade la teminación <em>.js</em> así que no debéis ponersela, acordáos de que la ruta debe partir de la que tengamos en <em>baseUrl</em>.</p>
 <p>Ahora que ya tenemos un sencillo contexto configurado, vamos a crear un primer módulo y añadirlo a <em>main.js</em> debajo del config</p>
-<div class="highlight"><pre><span class="nx">requirejs</span><span class="p">([</span><span class="s2">&quot;helpers/utils&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Utils</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="nx">requirejs</span><span class="p">([</span><span class="s2">&quot;helpers/utils&quot;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Utils</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Utils</span><span class="p">.</span><span class="nx">helloWorld</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
@@ -125,7 +129,7 @@ Yo normalmente uso jQuery, como podéis observar arriba, la he metido en la carp
 
 <p>el método <em>requirejs</em> admite como primer parámetro un array con las direcciones de los módulos que queramos utilizar dentro del mismo, como segundo parámetro tenemos una función que recibe como parámetros los mudulos descritos antes, es el momento de dar una buena semántica a los mismos. Así tenemos dentro de esta función un contexto único y aislado.</p>
 <p>En el ejemplo de arriba yo le he pasado el módulo utils, que se encuentra dentro de la carpeta helpers, ahora  ya lo tenemos listo para usarse bajo el nombre Utils, en este caso es un simple objeto js clave valor, pero podría ser una función, una clase, etc ...</p>
-<div class="highlight"><pre><span class="err">#</span><span class="nx">helpers</span><span class="o">/</span><span class="nx">utils</span>
+<div class="highlight"><pre><span></span><span class="err">#</span><span class="nx">helpers</span><span class="o">/</span><span class="nx">utils</span>
 <span class="nx">define</span><span class="p">({</span>
     <span class="nx">helloWorld</span> <span class="o">:</span> <span class="s1">&#39;hola&#39;</span>
 <span class="p">});</span>
@@ -134,7 +138,7 @@ Yo normalmente uso jQuery, como podéis observar arriba, la he metido en la carp
 
 <p><em>utils.js</em> usa el modo más sencillo de crear un ḿodulo, como no depende de ningún otro módulo no necesitamos pasarlo como parámetro, es interesante que leáis en la documetación los distintos tipos de <a href="http://requirejs.org/docs/api.html#funcmodule" target="_blank">módulos</a> que podéis hacer.</p>
 <p>Por ejemplo, vamos a volver a <em>main.js</em> y usar jQuery en el módulo principal, quedaría así:</p>
-<div class="highlight"><pre><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><span class="nx">require</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
     <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;js&#39;</span><span class="p">,</span>
     <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">jquery</span><span class="o">:</span> <span class="s1">&#39;vendor/jquery-1.10.2.min&#39;</span><span class="p">,</span>
@@ -159,7 +163,7 @@ Yo normalmente uso jQuery, como podéis observar arriba, la he metido en la carp
 <ul>
 <li><a href="http://www.requirejs.org/" target="_blank">RequireJs</a></li>
 </ul>
-<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/requireJs.html" data-via="circun4" data-lang="es">Twittear</a>
+<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/requireJs.html" data-via="sergi_py" data-lang="es">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
             <a href="#" class="go-top">Go Top</a>
     <div class="comments">

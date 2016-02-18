@@ -9,7 +9,7 @@ email:sergicollado@gmail.com
 
 Algunos pequeños e útiles comandos de git que te hacen la vida más sencilla:
 
-    :::bash
+    #!bash
     #delete all removed files
     git rm $(git ls-files --deleted)
 
@@ -33,7 +33,7 @@ Algunos pequeños e útiles comandos de git que te hacen la vida más sencilla:
 * [deploying](http://wildlyinaccurate.com/deploying-a-git-repository-to-a-remote-server){:target="_blank"}
 
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/git-interesting.html" data-via="circun4" data-lang="es">Twittear</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/git-interesting.html" data-via="sergi_py" data-lang="es">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 ![Hola](|filename|/images/posts/git.png)

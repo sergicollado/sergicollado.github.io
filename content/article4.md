@@ -111,7 +111,7 @@ También he incluido el método showImageFile, que nos serviría de manera senci
 
 
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/YiiExtendsModel.html" data-via="circun4" data-lang="es">Twittear</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/YiiExtendsModel.html" data-via="sergi_py" data-lang="es">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 ![YiiLogo](|filename|/images/posts/yii.png)

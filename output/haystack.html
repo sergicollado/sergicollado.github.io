@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="sergiDev, ">
+    <meta name="description" content="sergiDev, Coder and better human, I like vegetarian food and GameDev.">
 
 
-        <title>Haystack, ElasticSearch en Django // sergiDev // </title>
+        <title>Haystack, ElasticSearch en Django // sergiDev // Coder and better human, I like vegetarian food and GameDev.</title>
 
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/theme/css/pure.css">
-    <link rel="stylesheet" href="/theme/css/pygments.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pure.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pygments.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
@@ -26,21 +26,25 @@
 <body>
     <div class="pure-g-r" id="layout">
         <div class="sidebar pure-u">
-            <div class="cover-img" style="background-image: url('images/side.png')">
+            <div class="cover-img" style="background-image: url('images/rwd2.jpg')">
                 <div class="cover-body">
                     <header class="header">
                         <hgroup>
-                            <img class="avatar" src="images/cosmo.png">
-                            <h1 class="brand-main"><a href="">sergiDev</a></h1>
-                            <p class="tagline"></p>
+                            <img class="avatar" src="images/avatar.png">
+                            <h1 class="brand-main"><a href="http://localhost:8000">sergiDev</a></h1>
+                            <p class="tagline">Coder and better human, I like vegetarian food and GameDev.</p>
+                                <p class="links"><a href="pages/sobremi.html">sobre mí</a></p>
+                                <p class="links"><a href="pages/videogames.html">my games</a></p>
+                                <p class="links"><a href="http://localhost:8000/pages/videogames">videogames</a></p>
+                                <p class="links"><a href="http://localhost:8000/pages/sobremi">Sobre mí</a></p>
                                 <p class="social">
-                                    <a href="http://www.linkedin.com/in/sergicollado">
-                                        <i class="fa fa-linkedin-square fa-3x"></i>
+                                    <a href="https://github.com/sergicollado">
+                                        <i class="fa fa-git-square fa-3x"></i>
                                     </a>
-                                    <a href="https://plus.google.com/u/0/108686854890472733391/about">
-                                        <i class="fa fa-google-plus fa-3x"></i>
+                                    <a href="http://sergicollado.itch.io">
+                                        <i class="fa fa-gamepad fa-3x"></i>
                                     </a>
-                                    <a href="https://twitter.com/circun4">
+                                    <a href="https://twitter.com/sergi_py">
                                         <i class="fa fa-twitter-square fa-3x"></i>
                                     </a>
                                 </p>
@@ -55,20 +59,20 @@
                 <header class="post-header">
                     <h1>Haystack, ElasticSearch en Django</h1>
                         <p class="post-meta">
-                            // under                                 <a class="post-category" href="/tag/django.html">Django</a>
-                                <a class="post-category" href="/tag/python.html">python</a>
-                                <a class="post-category" href="/tag/elasticsearch.html">elasticsearch</a>
-                                <a class="post-category" href="/tag/haystack.html">haystack</a>
+                            // under                                 <a class="post-category" href="http://localhost:8000/tag/django.html">Django</a>
+                                <a class="post-category" href="http://localhost:8000/tag/python.html">python</a>
+                                <a class="post-category" href="http://localhost:8000/tag/elasticsearch.html">elasticsearch</a>
+                                <a class="post-category" href="http://localhost:8000/tag/haystack.html">haystack</a>
                         </p>
                 </header>
             </section>
-            <p><img alt="elasticsearch" src="/images/posts/elasticsearch.png" /></p>
+            <p><img alt="elasticsearch" src="http://localhost:8000/images/posts/elasticsearch.png" /></p>
 <p><a href="http://www.elasticsearch.org/" target="_blank">Elasticsearch</a> es una herramienta open source flexible y poderosa, un motor de búsquedas y analíticas real-time distribuido, cuyo corazón es el famoso proyecto Java Lucene.</p>
 <p>En esta entrada no pretendo hacer un manual extenso sobre este magnífico proyecto open source, si no describir los pasos básicos que se deben seguir para usarlo en nuestras aplicaciones web Django, a través de <a href="http://haystacksearch.org/" target="_blank">Haystack</a></p>
 <p><a href="http://haystacksearch.org/">Haystack</a> es una librería para Django que nos sirve para usar motores de búsqueda a través  de su API, se integra pefectamente con el workflow del Framework y nos permite usar varios motores como <a href="http://lucene.apache.org/solr/" target="_blank">Solr</a>,<a href="https://bitbucket.org/mchaput/whoosh/wiki/Home" target="_blank">whoosh</a>,etc...</p>
 <p>Primero deberíamos instalar ElastickSearch, para ello vamos a su página de <a href="http://www.elasticsearch.org/download/" target=":_blank">descargas</a> , allí bajamos la versión que nos interese, en mi caso como uso Ubuntu el .deb, y lo instalo en mi máquina.</p>
 <p>Ahora tenemos que iniciarlo como servicio:</p>
-<div class="highlight"><pre>    sudo service elasticsearch start
+<div class="highlight"><pre><span></span>    sudo service elasticsearch start
 
     <span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> sergi:
      * Starting ElasticSearch Server
@@ -77,31 +81,31 @@
 
 
 <p>Después necesitamos instalar unas pyelasticsearch y haystack en el virtualenv de nuestro proyecto:</p>
-<div class="highlight"><pre>    pip install pyelasticsearch
+<div class="highlight"><pre><span></span>    pip install pyelasticsearch
     pip install django-haystack
 </pre></div>
 
 
 <p>Añadimos Haystack a nuestro archivo de configuración de Django:</p>
-<div class="highlight"><pre>    <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
-        <span class="s">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
-        <span class="s">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
-        <span class="s">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
-        <span class="s">&#39;django.contrib.sites&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span>    <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;django.contrib.sites&#39;</span><span class="p">,</span>
 
-        <span class="c"># added</span>
-        <span class="s">&#39;haystack&#39;</span><span class="p">,</span>
+        <span class="c1"># added</span>
+        <span class="s1">&#39;haystack&#39;</span><span class="p">,</span>
     <span class="p">]</span>
 </pre></div>
 
 
 <p>Añadimos la configuración de elacticsearch también a nuestro settings.py</p>
-<div class="highlight"><pre>    <span class="n">HAYSTACK_CONNECTIONS</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine&#39;</span><span class="p">,</span>
-            <span class="s">&#39;URL&#39;</span><span class="p">:</span> <span class="s">&#39;http://127.0.0.1:9200/&#39;</span><span class="p">,</span>
-            <span class="s">&#39;INDEX_NAME&#39;</span><span class="p">:</span> <span class="s">&#39;haystack&#39;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span>    <span class="n">HAYSTACK_CONNECTIONS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;URL&#39;</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:9200/&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;INDEX_NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;haystack&#39;</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">}</span>
 </pre></div>
@@ -109,7 +113,7 @@
 
 <p>Lo siguiente es indexar los modelos que queremos que aparezcan el las busquedas.
 Para ello añadimos el archivo search_indexes.py en una de nuestras apps:</p>
-<div class="highlight"><pre>    <span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">datetime</span>
     <span class="kn">from</span> <span class="nn">haystack</span> <span class="kn">import</span> <span class="n">indexes</span>
     <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">News</span>
 
@@ -117,10 +121,10 @@ Para ello añadimos el archivo search_indexes.py en una de nuestras apps:</p>
     <span class="k">class</span> <span class="nc">NewsIndex</span><span class="p">(</span><span class="n">indexes</span><span class="o">.</span><span class="n">SearchIndex</span><span class="p">,</span> <span class="n">indexes</span><span class="o">.</span><span class="n">Indexable</span><span class="p">):</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">document</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">use_template</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-        <span class="c">#model fields</span>
-        <span class="n">caption</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s">&#39;caption&#39;</span><span class="p">)</span>
-        <span class="n">author</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s">&#39;author&#39;</span><span class="p">)</span>
-        <span class="n">created_at</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s">&#39;created_at&#39;</span><span class="p">)</span>
+        <span class="c1">#model fields</span>
+        <span class="n">caption</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s1">&#39;caption&#39;</span><span class="p">)</span>
+        <span class="n">author</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s1">&#39;author&#39;</span><span class="p">)</span>
+        <span class="n">created_at</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">model_attr</span><span class="o">=</span><span class="s1">&#39;created_at&#39;</span><span class="p">)</span>
 
         <span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">News</span>
@@ -134,7 +138,7 @@ Para ello añadimos el archivo search_indexes.py en una de nuestras apps:</p>
 <p>En este caso en concreto estamos indexando el modelo news, el objeto SearchIndex es el modo en que Haystack determina que datos tendrá el índice.</p>
 <p>Sólo puede haber un field con con el argumento document=True y es obligatorio, es el primer campo donde buscará.</p>
 <p>Como añadido le podemos pasar el parámetro use_template=True, si lo hacemos tendremos que crear en el directorio dónde tengamos nuestras templates esta estructura de carpetas search/indexes/myapp/news_text.txt donde news_text.txt será el template  que use para guardar los datos indexados del modelo.</p>
-<div class="highlight"><pre>    <span class="p">{{</span> <span class="nb">object</span><span class="o">.</span><span class="n">caption</span> <span class="p">}}</span>
+<div class="highlight"><pre><span></span>    <span class="p">{{</span> <span class="nb">object</span><span class="o">.</span><span class="n">caption</span> <span class="p">}}</span>
     <span class="p">{{</span> <span class="nb">object</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">get_full_name</span> <span class="p">}}</span>
     <span class="p">{{</span> <span class="nb">object</span><span class="o">.</span><span class="n">body</span> <span class="p">}}</span>
 </pre></div>
@@ -142,12 +146,12 @@ Para ello añadimos el archivo search_indexes.py en una de nuestras apps:</p>
 
 <p>También, como en el ejemplo anterior, se pueden usar fields adicionales para añadir filtros adicionales.</p>
 <p>Ahora sólo nos queda, añadir la url a nuestro URLconf</p>
-<div class="highlight"><pre>    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^search/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;haystack.urls&#39;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span>    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^search/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;haystack.urls&#39;</span><span class="p">))</span>
 </pre></div>
 
 
 <p>La template que representará las búsquedas, en templates/search/search.html, que yo formateo con bootstrap jejeje:</p>
-<div class="highlight"><pre>    <span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;main.html&#39;</span> <span class="cp">%}</span>
+<div class="highlight"><pre><span></span>    <span class="cp">{%</span> <span class="k">extends</span> <span class="s1">&#39;main.html&#39;</span> <span class="cp">%}</span>
     <span class="cp">{%</span> <span class="k">block</span> <span class="nv">main_content</span> <span class="cp">%}</span>
 
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;row&#39;</span><span class="nt">&gt;</span>
@@ -188,12 +192,12 @@ Para ello añadimos el archivo search_indexes.py en una de nuestras apps:</p>
 
 <p>Como podéis observar page.object_list es una lista de los objetos devueltos en la busqueda.
 Ya sólo resta crear los indices nuevos desde manage.py:</p>
-<div class="highlight"><pre>    <span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">rebuild_index</span>
+<div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">rebuild_index</span>
 </pre></div>
 
 
 <p>Una vez funcionando todo, podemos actualizar los índices, con el comando:</p>
-<div class="highlight"><pre>    <span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">update_index</span>
+<div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">update_index</span>
 </pre></div>
 
 
@@ -204,7 +208,7 @@ Ya sólo resta crear los indices nuevos desde manage.py:</p>
 <li><a href="http://www.elasticsearch.org/download/" target="_blank">Elasticsearch</a></li>
 <li><a href="http://haystacksearch.org/" target="_blank">Haystack</a></li>
 </ul>
-<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/haystack.html" data-via="circun4" data-lang="es">Twittear</a>
+<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/haystack.html" data-via="sergi_py" data-lang="es">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
             <a href="#" class="go-top">Go Top</a>
     <div class="comments">

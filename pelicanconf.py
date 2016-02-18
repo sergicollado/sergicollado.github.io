@@ -20,17 +20,22 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+DISPLAY_PAGES_ON_MENU = True
+MENUITEMS = (
+    ('sobre mí', 'pages/sobremi.html'),
+    ('my games', 'pages/videogames.html'),
+)
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+#LINKS = (('Pelican', 'http://getpelican.com/'),
+         #('Python.org', 'http://python.org/'),
+         #('Jinja2', 'http://jinja.pocoo.org/'),
+         #('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('linkedin-square', 'http://www.linkedin.com/in/sergicollado'),
-          ('google-plus', 'https://plus.google.com/u/0/108686854890472733391/about'),
-          ('twitter-square', 'https://twitter.com/circun4'),)
+SOCIAL = (('git-square', 'https://github.com/sergicollado'),
+          ('gamepad', 'http://sergicollado.itch.io'),
+          ('twitter-square', 'https://twitter.com/sergi_py'),)
 
 
 DEFAULT_PAGINATION = 10
@@ -43,5 +48,5 @@ DISQUS_SITENAME = "sergicollado"
 DISQUS_ON_PAGES = True
 GOOGLE_ANALYTICS = "UA-41990150-1"
 
-COVER_IMG_URL = 'images/side.png'
-PROFILE_IMG_URL = 'images/cosmo.png'
+COVER_IMG_URL = 'images/rwd2.jpg'
+PROFILE_IMG_URL = 'images/avatar.png'

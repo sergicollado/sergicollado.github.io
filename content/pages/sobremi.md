@@ -29,12 +29,12 @@ He trabajado en la progamación web TDD en Python, PHP, Javascript, sql, diverso
 Siempre con ganas de mejorar, me involucro al máximo en los proyectos, tengo rapidez de adaptación tanto profesional como personalmente.
 
 Especialidades:Desarrollo de aplicaciones en entorno web, Django backend y Js.
-    
+
 Si quieres contactar conmigo escríbeme a: sergicollado@gmail.com o hi@sergicollado.com
 
 ###Redes sociales:
 * [LinkedIn](http://es.linkedin.com/in/sergicollado/){:target="_blank"}
-* [Twitter](https://twitter.com/circun4){:target="_blank"}
+* [Twitter](https://twitter.com/sergi_py){:target="_blank"}
 * [G+](https://plus.google.com/u/0/108686854890472733391/about){:target="_blank"}
 
 

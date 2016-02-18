@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="sergiDev, ">
+    <meta name="description" content="sergiDev, Coder and better human, I like vegetarian food and GameDev.">
 
 
-        <title>Librería tmxScene python-sfml python // sergiDev // </title>
+        <title>Librería tmxScene python-sfml python // sergiDev // Coder and better human, I like vegetarian food and GameDev.</title>
 
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/theme/css/pure.css">
-    <link rel="stylesheet" href="/theme/css/pygments.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pure.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pygments.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
@@ -26,21 +26,25 @@
 <body>
     <div class="pure-g-r" id="layout">
         <div class="sidebar pure-u">
-            <div class="cover-img" style="background-image: url('images/side.png')">
+            <div class="cover-img" style="background-image: url('images/rwd2.jpg')">
                 <div class="cover-body">
                     <header class="header">
                         <hgroup>
-                            <img class="avatar" src="images/cosmo.png">
-                            <h1 class="brand-main"><a href="">sergiDev</a></h1>
-                            <p class="tagline"></p>
+                            <img class="avatar" src="images/avatar.png">
+                            <h1 class="brand-main"><a href="http://localhost:8000">sergiDev</a></h1>
+                            <p class="tagline">Coder and better human, I like vegetarian food and GameDev.</p>
+                                <p class="links"><a href="pages/sobremi.html">sobre mí</a></p>
+                                <p class="links"><a href="pages/videogames.html">my games</a></p>
+                                <p class="links"><a href="http://localhost:8000/pages/videogames">videogames</a></p>
+                                <p class="links"><a href="http://localhost:8000/pages/sobremi">Sobre mí</a></p>
                                 <p class="social">
-                                    <a href="http://www.linkedin.com/in/sergicollado">
-                                        <i class="fa fa-linkedin-square fa-3x"></i>
+                                    <a href="https://github.com/sergicollado">
+                                        <i class="fa fa-git-square fa-3x"></i>
                                     </a>
-                                    <a href="https://plus.google.com/u/0/108686854890472733391/about">
-                                        <i class="fa fa-google-plus fa-3x"></i>
+                                    <a href="http://sergicollado.itch.io">
+                                        <i class="fa fa-gamepad fa-3x"></i>
                                     </a>
-                                    <a href="https://twitter.com/circun4">
+                                    <a href="https://twitter.com/sergi_py">
                                         <i class="fa fa-twitter-square fa-3x"></i>
                                     </a>
                                 </p>
@@ -55,25 +59,25 @@
                 <header class="post-header">
                     <h1>Librería tmxScene python-sfml python</h1>
                         <p class="post-meta">
-                            // under                                 <a class="post-category" href="/tag/tmx.html">tmx</a>
-                                <a class="post-category" href="/tag/python.html">python</a>
-                                <a class="post-category" href="/tag/sfml.html">sfml</a>
-                                <a class="post-category" href="/tag/tmxscene.html">tmxScene</a>
-                                <a class="post-category" href="/tag/tiled.html">tiled</a>
+                            // under                                 <a class="post-category" href="http://localhost:8000/tag/tmx.html">tmx</a>
+                                <a class="post-category" href="http://localhost:8000/tag/python.html">python</a>
+                                <a class="post-category" href="http://localhost:8000/tag/sfml.html">sfml</a>
+                                <a class="post-category" href="http://localhost:8000/tag/tmxscene.html">tmxScene</a>
+                                <a class="post-category" href="http://localhost:8000/tag/tiled.html">tiled</a>
                         </p>
                 </header>
             </section>
-            <p><img alt="sfml" src="/images/posts/sfml-logo.png" /></p>
+            <p><img alt="sfml" src="http://localhost:8000/images/posts/sfml-logo.png" /></p>
 <p>Últimamente me he propuesto hacer juego en python y de paso probar <a href="http://www.python-sfml.org/index.html" target="_blank">Python-sfml</a> que me parece muy interesante.</p>
 <p>El primer paso ha consistedo en crear una librería para poder usar el maravilloso software <a href="http://www.mapeditor.org/" target="_blank">tiled</a> y así editar los niveles del juego con toda la potencia que te da esta herramienta.</p>
 <p>Su utilización es bastante sencilla, hasta que la empaquete y se pueda instalar mediante pip, simplemente debemos clonar el <a href="https://github.com/sergicollado/sceneTmx" target="_blank">repositorio</a> el múdulo en cuestión se corresponde con la carpeta scene.</p>
 <p>tmxScene tiene como dependecia el módulo tmxlib y lo he desarrollado en Python 2.7, se puede instalar fácilmente desde Pip:</p>
-<div class="highlight"><pre>    pip install tmxlib
+<div class="highlight"><pre><span></span>    pip install tmxlib
 </pre></div>
 
 
 <p>El repositorio es en sí mismo un ejemplo de como se puede utilizar, puedes echar un vistazo al script de entrada main.py</p>
-<div class="highlight"><pre>    <span class="kn">import</span> <span class="nn">sfml</span> <span class="kn">as</span> <span class="nn">sf</span>
+<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">sfml</span> <span class="kn">as</span> <span class="nn">sf</span>
     <span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="o">*</span>
     <span class="kn">import</span> <span class="nn">scene</span>
     <span class="kn">import</span> <span class="nn">character</span>
@@ -81,7 +85,7 @@
 
     <span class="n">width</span> <span class="o">=</span> <span class="mi">1280</span>
     <span class="n">height</span> <span class="o">=</span> <span class="mi">820</span>
-    <span class="n">window</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">RenderWindow</span><span class="p">(</span><span class="n">sf</span><span class="o">.</span><span class="n">VideoMode</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="s">&quot;pySFML Window&quot;</span><span class="p">)</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">RenderWindow</span><span class="p">(</span><span class="n">sf</span><span class="o">.</span><span class="n">VideoMode</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="s2">&quot;pySFML Window&quot;</span><span class="p">)</span>
     <span class="n">window</span><span class="o">.</span><span class="n">framerate_limit</span> <span class="o">=</span> <span class="mi">60</span>
     <span class="n">window</span><span class="o">.</span><span class="n">vertical_synchronization</span> <span class="o">=</span> <span class="bp">True</span>
 
@@ -89,19 +93,19 @@
 
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">texture</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">Texture</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">IMAGES_PATH</span><span class="o">+</span><span class="s">&quot;twilight-tiles.png&quot;</span><span class="p">)</span>
+        <span class="n">texture</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">Texture</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">IMAGES_PATH</span><span class="o">+</span><span class="s2">&quot;twilight-tiles.png&quot;</span><span class="p">)</span>
 
         <span class="n">sprites</span> <span class="o">=</span> <span class="n">drawables</span><span class="o">.</span><span class="n">Sprites</span><span class="p">()</span>
-        <span class="n">scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">MAPS_PATH</span><span class="o">+</span><span class="s">&quot;textMap.tmx&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">sprites</span><span class="p">)</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">MAPS_PATH</span><span class="o">+</span><span class="s2">&quot;textMap.tmx&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">sprites</span><span class="p">)</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">set_images_path</span><span class="p">(</span><span class="n">IMAGES_PATH</span><span class="p">)</span>
         <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;c2&#39;</span> <span class="p">,</span> <span class="s">&#39;distance&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">},</span>
-            <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;c1&#39;</span> <span class="p">,</span> <span class="s">&#39;distance&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;c2&#39;</span> <span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;c1&#39;</span> <span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
         <span class="p">]</span>
         <span class="n">scene</span><span class="o">.</span><span class="n">set_visible_layers</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
 
 
-        <span class="n">player</span> <span class="o">=</span> <span class="n">character</span><span class="o">.</span><span class="n">Character</span><span class="p">(</span><span class="n">IMAGES_PATH</span><span class="o">+</span><span class="s">&quot;mikeypebalz.png&quot;</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span> <span class="n">sprites</span><span class="p">)</span>
+        <span class="n">player</span> <span class="o">=</span> <span class="n">character</span><span class="o">.</span><span class="n">Character</span><span class="p">(</span><span class="n">IMAGES_PATH</span><span class="o">+</span><span class="s2">&quot;mikeypebalz.png&quot;</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span> <span class="n">sprites</span><span class="p">)</span>
         <span class="n">player</span><span class="o">.</span><span class="n">set_velocity</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
         <span class="k">print</span> <span class="ne">IOError</span>
@@ -143,7 +147,7 @@
 <li><a href="https://github.com/sergicollado/sceneTmx" target="_blank">repositorio</a></li>
 <li><a href="http://www.python-sfml.org/index.html" target="_blank">Python-sfml</a></li>
 </ul>
-<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/tmxscene.html" data-via="circun4" data-lang="es">Twittear</a>
+<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/tmxscene.html" data-via="sergi_py" data-lang="es">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
             <a href="#" class="go-top">Go Top</a>
     <div class="comments">
