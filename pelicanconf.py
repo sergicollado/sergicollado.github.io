@@ -48,5 +48,5 @@ DISQUS_SITENAME = "sergicollado"
 DISQUS_ON_PAGES = True
 GOOGLE_ANALYTICS = "UA-41990150-1"
 
-COVER_IMG_URL = 'images/rwd2.jpg'
-PROFILE_IMG_URL = 'images/avatar.png'
+COVER_IMG_URL = '/images/rwd2.jpg'
+PROFILE_IMG_URL = '/images/avatar.png'

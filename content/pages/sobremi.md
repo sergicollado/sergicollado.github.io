@@ -19,7 +19,7 @@ Soy un entusiasta de la programación en general.
 * Mysql, Apache, WSGI
 
 
-Me gusta el Software libre, Python y Git.
+Me gusta el Software libre, Python y Git y el desarrollo de juegos con herramientas opensource.
 
 Mi experiencia laboral está asentada por un conocimiento equilibrado entre el desarrollo de aplicaciones y la capacidad de adaptarme fácilmente a las nuevas tecnologías y los cambios del software.
 
