@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="sergiDev, Coder and better human, I like vegetarian food and GameDev.">
+
+
+        <title>Extendiendo Model CActiveRecord // sergiDev // Coder and better human, I like vegetarian food and GameDev.</title>
+
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pure.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pygments.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="pure-g-r" id="layout">
+        <div class="sidebar pure-u">
+            <div class="cover-img" style="background-image: url('/images/rwd2.jpg')">
+                <div class="cover-body">
+                    <header class="header">
+                        <hgroup>
+                            <img class="avatar" src="/images/avatar.png">
+                            <h1 class="brand-main"><a href="http://localhost:8000">sergiDev</a></h1>
+                            <p class="tagline">Coder and better human, I like vegetarian food and GameDev.</p>
+                                <p class="links"><a href="http://localhost:8000/pages/videogames">Galería</a></p>
+                                <p class="links"><a href="http://localhost:8000/pages/sobremi">Sobre mí</a></p>
+                                <p class="social">
+                                    <a href="https://github.com/sergicollado">
+                                        <i class="fa fa-git-square fa-3x"></i>
+                                    </a>
+                                    <a href="http://sergicollado.itch.io">
+                                        <i class="fa fa-gamepad fa-3x"></i>
+                                    </a>
+                                    <a href="https://twitter.com/sergi_py">
+                                        <i class="fa fa-twitter-square fa-3x"></i>
+                                    </a>
+                                </p>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Extendiendo Model CActiveRecord</h1>
+                        <p class="post-meta">
+                            // under                                 <a class="post-category" href="http://localhost:8000/tag/php.html">php</a>
+                                <a class="post-category" href="http://localhost:8000/tag/yii.html">Yii</a>
+                                <a class="post-category" href="http://localhost:8000/tag/activerecord.html">ActiveRecord</a>
+                                <a class="post-category" href="http://localhost:8000/tag/extends.html">extends</a>
+                        </p>
+                </header>
+            </section>
+            <p>La mayoría de Frameworks para crear webs, nos sirven de gran ayuda a la hora de estructurar nuestro código y ayudarnos con miles de funcionalidades.
+A veces estas ventajas se transforman en desventajas, dificultando la versatilidad de la toma de decisiones, haciéndonos perder más tiempo del que debíeramos.</p>
+<p>Últimamente he usado el Framework Yii, en un par de proyectos.
+En Yii se pueden crear módulos, widgets y componentes, así puedes descargar la lógica de los controladores, consiguiendo un código más legible.</p>
+<p>Puedes encontrar el código en <a href="https://github.com/sergicollado/blog-examples/blob/master/CModelWithFile.php" target="_blank">MiGitHub</a></p>
+<p>Cómo ejemplo me voy a centrar en una clase que he hecho estos días:</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">//A field named &#39;file&#39; is required&#39;</span>
+<span class="k">class</span> <span class="nc">CModelWithFile</span> <span class="k">extends</span> <span class="nx">CActiveRecord</span><span class="p">{</span>
+
+    <span class="k">public</span> <span class="nv">$file_uploaded</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveWithImage</span><span class="p">(</span><span class="nv">$post</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">=</span><span class="nv">$post</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">validate</span><span class="p">())</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">saveFile</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">saveFile</span><span class="p">(){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file_uploaded</span>   <span class="o">=</span>   <span class="nx">CUploadedFile</span><span class="o">::</span><span class="na">getInstance</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span><span class="s1">&#39;file_uploaded&#39;</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file_uploaded</span><span class="p">)</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+        <span class="nv">$location_image</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFileLocation</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span> <span class="o">=</span>  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moveFile</span><span class="p">(</span><span class="nv">$location_image</span><span class="p">,</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file_uploaded</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">moveFile</span><span class="p">(</span><span class="nv">$folder</span><span class="p">,</span><span class="nv">$file_uploaded</span><span class="p">){</span>
+        <span class="nv">$image_name</span><span class="o">=</span> <span class="nb">md5</span><span class="p">(</span><span class="nv">$file_uploaded</span><span class="o">.</span><span class="s1">&#39;algoparacodificar&#39;</span><span class="p">)</span><span class="o">.</span><span class="nv">$file_uploaded</span><span class="p">;</span>
+        <span class="nv">$image_name</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$image_name</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createDirectory</span><span class="p">();</span>
+        <span class="nv">$file_uploaded</span><span class="o">-&gt;</span><span class="na">saveAs</span><span class="p">(</span><span class="nv">$folder</span><span class="o">.</span><span class="nv">$image_name</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$image_name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getFileUrl</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nx">Yii</span><span class="o">::</span><span class="na">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getBaseUrl</span><span class="p">(</span><span class="k">true</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;/images/&#39;</span><span class="o">.</span><span class="nb">get_class</span><span class="p">(</span><span class="nv">$this</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getFileLocation</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nx">Yii</span><span class="o">::</span><span class="na">getPathOfAlias</span><span class="p">(</span><span class="s1">&#39;webroot&#39;</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;/images/&#39;</span><span class="o">.</span><span class="nb">get_class</span><span class="p">(</span><span class="nv">$this</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showImageFile</span><span class="p">(){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">        &lt;li class=&quot;span3&quot;&gt;</span>
+<span class="x">            &lt;a href=&quot;#&quot; class=&quot;thumbnail&quot; rel=&quot;tooltip&quot; data-title=&quot;Imagen&quot;&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?php</span> <span class="nv">$root</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFileUrl</span><span class="p">()</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">file</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">                &lt;img src=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$root</span><span class="p">;</span><span class="cp">?&gt;</span><span class="x">&quot; /&gt;</span>
+<span class="x">            &lt;/a&gt;</span>
+<span class="x">        &lt;/li&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">createDirectory</span><span class="p">(){</span>
+        <span class="nv">$directory</span> <span class="o">=</span> <span class="nb">rtrim</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getFileLocation</span><span class="p">(),</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">is_dir</span><span class="p">(</span><span class="nv">$directory</span><span class="p">))</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+
+        <span class="nb">mkdir</span><span class="p">(</span><span class="nv">$directory</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Un gran número de entidades tienen la necesidad de subir algún tipo de archivo.
+Además Yii te ofrece una manera fácil de validar atributos que llegan de un post.
+Si toda la lógica necesaria para ambas cosas las dejamos en un método del controlador, el resultado es un montón de código repetido.</p>
+<p>Para que funcione esta clase, tendríamos que tener una columna de tipoo string llamada 'file';
+El modo de uso es muy sencillo :</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Project&#39;</span><span class="p">]))</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$model</span><span class="o">-&gt;</span><span class="na">saveWithImage</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;Project&#39;</span><span class="p">]))</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="o">=&gt;</span><span class="nv">$model</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Podríamos sobreescribir los métodos getFileLocation y getFileUrl para modificar la carpeta dónde se guardará la imagen.</p>
+<p>Me he permitido añadir la función createDirectory, que  detectaría automáticamente si existe la carpeta donde deseamos guardar los archivos y la crearía, por defecto la carpeta images/NombreDelModelo... eso sí, debería estar creada la carpeta images en la raíz.</p>
+<p>También he incluido el método showImageFile, que nos serviría de manera sencilla para renderizar en html la imagen, cuando esta se encuentre disponible, por ejemplo en el formulario de actualización. Este método debería estar en un widget o similar, dada su funcionalidad.</p>
+<h3>Algunos enlaces interesantes sobre Yii:</h3>
+<ul>
+<li><a href="http://www.yiiframework.com/doc/guide/1.1/en/extension.create" target="_blank">Yii</a></li>
+</ul>
+<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://sergicollado.com/YiiExtendsModel.html" data-via="sergi_py" data-lang="es">Twittear</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
+<p><img alt="YiiLogo" src="http://localhost:8000/images/posts/yii.png" /></p>
+            <a href="#" class="go-top">Go Top</a>
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "sergicollado"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+<footer class="footer">
+    <p>&copy; sergicollado@gmail.com &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure-single">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+    </div>
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-41990150-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+    </script>
+
+</body>
+</html>
