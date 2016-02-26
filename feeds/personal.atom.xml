@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sergiDev</title><link href="http://sergicollado.com/" rel="alternate"></link><link href="http://sergicollado.com/feeds/personal.atom.xml" rel="self"></link><id>http://sergicollado.com/</id><updated>2016-02-25T00:00:00+01:00</updated><entry><title>Nuevos horizontes, retomando el blog</title><link href="http://sergicollado.com/nuevos-horizontes.html" rel="alternate"></link><updated>2016-02-25T00:00:00+01:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2016-02-25:nuevos-horizontes.html</id><summary type="html">&lt;p&gt;&lt;img alt="COSMO" src="http://sergicollado.com/images/cosmo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Han pasado ya 3 años desde que dejé abandonado el blog,
+la verdad es que no ha sido por que  no haya tenido nada nuevo que escribir, todo lo contrario, no he parado en lo profesional ni en lo personal, no tengo excusas, simplemente no le he dedicado tiempo.&lt;/p&gt;
+&lt;p&gt;Aún así estos años han sido realmente productivos, a nivel personal he sido padre :) algo que cambia completamente tu enfoque, y a nivel profesional no he parado de mejorar y aprender, he trabajado en proyectos interesantes  AngularJs, Ionic, DjangoRestFramework, Laravel, Docker, Linux, Linux, Linux ... siempre intentando mantener una buena calidad y lo que es mejor, con un equipo de compañeros inmejorables :)&lt;/p&gt;
+&lt;p&gt;Y ahora que ... pues ahora, que tengo menos tiempo que nunca llevo unos meses pegándome fuego y dedicando mi poco tiempo libre al desarrollo de juegos (siempre con tecnología opensource por supuesto), es algo que me ha hecho replantearme el blog, y regresar a compartir con cualquier incauto que llegue a esta url mis progresos en este mundo tan interesante.&lt;/p&gt;
+&lt;p&gt;Hay un par de puntos  que quiero recalcar :)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;No estoy desarrollando juegos para ganarme la vida&lt;/li&gt;
+&lt;li&gt;No quiero entrar en la industria de videojuegos como empleado&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Es momento de disfrutar simplemente.&lt;/p&gt;
+&lt;p&gt;A partir de ahora compartiré las herramientas y trucos que vaya desarrollando en GodotEngine, Krita y demás software libre en los que me apoye.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="GODOT" src="http://sergicollado.com/images/posts/logo.svg" /&gt;
+&lt;img alt="GODOT" src="http://sergicollado.com/images/posts/krita-logo.png" /&gt;&lt;/p&gt;</summary><category term="Personal"></category></entry></feed>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sergiDev</title><link href="http://sergicollado.com/" rel="alternate"></link><link href="http://sergicollado.com/feeds/gamedev.atom.xml" rel="self"></link><id>http://sergicollado.com/</id><updated>2016-02-26T00:00:00+01:00</updated><entry><title>Haciendo juegos con software OpenSource</title><link href="http://sergicollado.com/haciendo-juegos-con-opensource.html" rel="alternate"></link><updated>2016-02-26T00:00:00+01:00</updated><author><name>Sergi Collado</name></author><id>tag:sergicollado.com,2016-02-26:haciendo-juegos-con-opensource.html</id><summary type="html">&lt;p&gt;&lt;img alt="GodotEngine" src="http://sergicollado.com/images/posts/logo.svg" /&gt;&lt;/p&gt;
+&lt;h2&gt;GodotEngine&lt;/h2&gt;
+&lt;p&gt;La herramienta CORE que yo utilizo actualmente para desarrollar videojuegos es &lt;a href="http://godotengine.org" target="_blank"&gt;GODOT&lt;/a&gt;,
+y la recomiendo, ya no solo por ser libre, si no por queme encanta su feeling, realmente puedes sentir como tu juego evoluciona rapidamente.
+El lenguaje de scripting que utiliza es limpio y similar a Python, y se puede aprender en poco tiempo.&lt;/p&gt;
+&lt;p&gt;Como te permite gestionar escenas te facilita muchísimo la vida.
+Para ello tenemos a nuestro alcance una variedad de Nodos que te dan la base para casi cualquier cosa que se te ocurra.
+Puedes exportar tu juego a Linux, Windows, OS,  Android, etc en practicamente un click.
+Y algo no menos importante es que tiene una comunidad maravillosa en la que poder apoyarse.&lt;/p&gt;
+&lt;p&gt;Me gustaría ir contando más en profundidad como trabajar con  Godot en las próximas entradas.
+Hay muchos engines opensource más que recomendables, Phaser, LibGdx ...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Krita" src="http://sergicollado.com/images/posts/krita-logo.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Krita&lt;/h2&gt;
+&lt;p&gt;Krita ahora mismo es mi software favorito a la hora de diseñar sprites para mis juegos, tiene un potencial brutal.
+Me gusta mucho las herramientas de dibujo que incorpora, como las guias que incorpora para hacer dibujos en perspectiva, los pinceles son también muy potentes
+y personalizables, es verdad que al principio abruma un poco y que te cuesta un poco preparar un pincel para pixel art.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="LMMS" src="http://sergicollado.com/images/posts/lmms.jpg" /&gt;&lt;/p&gt;
+&lt;h2&gt;LMMS&lt;/h2&gt;
+&lt;p&gt;Para componer música recomiendo &lt;a href="https://lmms.io" target="_blank"&gt;LMMS&lt;/a&gt;,
+es un completo secuenciador, facil de instalar y con unas librerias base preparadas para hacer música desde el primer momento,
+yo habitualmente acostumbro a usar Reaper, pero no es openSource, digamos que en es mi talón de Aquiles, pero he usado varias veces LMMS y es el software opensource de composición de música que más me gusta.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Blender" src="http://sergicollado.com/images/posts/blender.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;Blender&lt;/h2&gt;
+&lt;p&gt;Es la herramienta 3D por antonomasia, he trabajado muchos años haciendo 3D Max y  ... Blender es Dios.
+Es el mejor ejemplo de por qué el opensource hace evolucionar todo lo que toca, a pasos agigantados.&lt;/p&gt;
+&lt;p&gt;¿Y vosotros? ¿Que software usáis para crear vuestros juegos?&lt;/p&gt;</summary><category term="gamedev"></category><category term="godot"></category><category term="krita"></category></entry></feed>
